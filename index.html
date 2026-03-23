@@ -2,56 +2,75 @@
 <html lang="zh-Hant">
 <head>
     <meta charset="UTF-8">
-    <title>CSS Headings 練習 (修正邊框陰影版)</title>
+    <title>CSS Headings 練習 (複合邊框細節版)</title>
     <style>
         body {
             /* 使用圖片中的襯線字體 */
             font-family: "Times New Roman", serif;
             padding: 40px;
-            line-height: 1.6;
-            background-color: white; /* 確保背景為白，以便觀察陰影 */
+            background-color: white; /* 確保背景為白，以便觀察 */
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            gap: 20px; /* 元素之間的間距 */
         }
 
         /* Heading 1: 上劃線 + 粉紅色文字陰影 */
         h1 {
             font-size: 36px;
+            font-weight: bold;
             text-decoration: overline;
             text-decoration-thickness: 3px; 
             text-shadow: 3px 3px 0px pink; 
-            margin-bottom: 30px;
+            margin: 0;
+            padding: 10px 0;
+            color: black;
         }
 
-        /* Heading 2: 斜體 + 黃色 3D 陰影邊框 */
+        /* Heading 2: 斜體 + 黃色內框 + 黑色外框 (修正核心) */
         h2 {
             font-style: italic;
-            /* 修正點：使用較飽和的黃色，並將 ridge 改為 unset (凸起) */
-            /* unset 樣式會自動把邊框的下和右畫得比較暗，形成陰影感 */
-            border: 4px outset #FFED00; 
-            
-            /* (選擇性) 如果想手動增加一個非常細微的外陰影，可以啟用這行： */
-            /* box-shadow: 1px 1px 1px rgba(0,0,0,0.2); */
-
-            padding: 5px 10px;
+            font-weight: bold;
+            font-size: 28px;
+            margin: 0;
+            padding: 10px 20px;
             width: fit-content;
-            min-width: 80%;
-            margin-bottom: 30px;
+            min-width: 80%; /* 讓框看起來長一點，符合圖片比例 */
+            
+            /* 修正點：使用純黃色實線邊框 */
+            border: 6px solid #FFED00; /* 黃色框，增加粗度 */
+            
+            /* (關鍵) 加上黑色實線輪廓，緊貼黃色框外 */
+            outline: 2px solid black; /* 黑色外框 */
+            
+            /* 提示：圖片看起來是複合邊框，outline 在 border 外。
+               如果要讓黑色線更向內或向外，可以使用 outline-offset: -2px; (向內) 或 2px; (向外) 
+               根據圖片，預設向外看起來最接近。 */
         }
 
         /* Heading 3: 右對齊 + 底線 */
         h3 {
+            font-size: 24px;
+            font-weight: bold;
+            margin: 0;
             text-align: right;
             text-decoration: underline;
-            font-weight: bold;
+            text-decoration-thickness: 2px;
+            color: black;
         }
     </style>
 </head>
 <body>
 
-    <h1>This is heading 1</h1>
+    <div class="container">
+        <h1>This is heading 1</h1>
 
-    <h2>This is heading 2</h2>
+        <h2>This is heading 2</h2>
 
-    <h3>This is heading 3</h3>
+        <h3>This is heading 3</h3>
+    </div>
 
 </body>
 </html>
