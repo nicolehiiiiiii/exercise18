@@ -2,30 +2,37 @@
 <html lang="zh-Hant">
 <head>
     <meta charset="UTF-8">
-    <title>CSS Headings 練習</title>
+    <title>CSS Headings 練習 (修正邊框陰影版)</title>
     <style>
         body {
             /* 使用圖片中的襯線字體 */
             font-family: "Times New Roman", serif;
             padding: 40px;
             line-height: 1.6;
+            background-color: white; /* 確保背景為白，以便觀察陰影 */
         }
 
         /* Heading 1: 上劃線 + 粉紅色文字陰影 */
         h1 {
             font-size: 36px;
             text-decoration: overline;
-            text-decoration-thickness: 3px; /* 讓上劃線粗一點 */
-            text-shadow: 3px 3px 0px pink; /* 製作粉紅色的重疊效果 */
+            text-decoration-thickness: 3px; 
+            text-shadow: 3px 3px 0px pink; 
             margin-bottom: 30px;
         }
 
-        /* Heading 2: 斜體 + 黃色立體邊框 */
+        /* Heading 2: 斜體 + 黃色 3D 陰影邊框 */
         h2 {
             font-style: italic;
-            border: 4px ridge yellow; /* 使用 ridge 樣式來呈現圖片中的 3D 質感 */
+            /* 修正點：使用較飽和的黃色，並將 ridge 改為 unset (凸起) */
+            /* unset 樣式會自動把邊框的下和右畫得比較暗，形成陰影感 */
+            border: 4px outset #FFED00; 
+            
+            /* (選擇性) 如果想手動增加一個非常細微的外陰影，可以啟用這行： */
+            /* box-shadow: 1px 1px 1px rgba(0,0,0,0.2); */
+
             padding: 5px 10px;
-            width: fit-content; /* 讓邊框貼合文字長度，若要全寬可移除此行 */
+            width: fit-content;
             min-width: 80%;
             margin-bottom: 30px;
         }
